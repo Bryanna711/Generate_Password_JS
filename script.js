@@ -14,6 +14,7 @@ function generatePassword() {
   console.log( "You clicked the Button");
 
   var choices =[];  
+  var pass = "";
   var passLength = window.prompt("How many characters would you like your password?", 10);
   
   if(!passLength) {
@@ -35,24 +36,24 @@ function generatePassword() {
     alert("Please make at least one selection.");
   }
 
-   else if(capital) {
+   if(capital) {
     choices= choices.concat(capAlpha);
   }
 
-   else if(lower) {
+  if(lower) {
     choices = choices.concat(lowAlpha);
   }
 
-  else if(numeric) {
+  if(numeric) {
     choices = choices.concat(num);
   }
 
-  else if(symbol){
+  if(symbol){
     choices = choices.concat(sym);
   }
 
       
-    var pass= "";
+ 
 
     for (var i = 0; i < passLength; i++) {
       var passOptions = choices[Math.floor(Math.random()*choices.length)];
