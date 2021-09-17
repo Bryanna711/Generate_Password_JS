@@ -1,78 +1,67 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+var lowAlpha=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var capAlpha= ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var num=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var sym=["!","@","#","$","%","^","&","*","(",")", "`","?","/"];
+
+
+
+
 function generatePassword() {
   console.log( "You clicked the Button");
 
+  var choices =[];  
   var passLength = window.prompt("How many characters would you like your password?", 10);
   
   if(!passLength) {
     return;
   }
-  else{
-    passLength = parseInt(passLength);
-    if(isNaN(passLength)) {
-      alert("You did not enter a number.")
-  }
-  else if (passLength<8 || passLength>128) {
-    alert("Please enter a number between 8-128")
+
+  else if (passLength<8 || passLength>128 || isNaN(passLength)) {
+    alert("Please enter a number between 8-128");
   }
     
-    else {
+  else {
       var capital = window.confirm("Do you want Capital Letters?");
-
-      if (!capital) {
-        return;
-      }
-
-      else{
-        var lower = window.confirm("Do you want Lowercase Letters?");
-
-        if (!lower) {
-          return
-        }
-
-        else{
-          var numeric = window.confirm("Do you want numeric characters?");
-
-          if(!numeric) {
-            return
-          }
-
-          else{
-            var symbol = window.confirm("Do you want special characters?")
-
-            if(!symbol){
-              return  
-            }
-            
-            else{
-              for (var i=0, i=passLength; i++;){
-              randomPass=randompass + charChoices.charAt(Math.floor(Math,random() * Math.floor(charChoices.length -1)));
-            }
-          }
-        }
-      }
-    }
+      var lower = window.confirm("Do you want Lowercase Letters?");
+      var numeric = window.confirm("Do you want numeric characters?");
+      var symbol = window.confirm("Do you want special characters?");
   }
 
-  var charChoices=[
-    {"lower":["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]},
-    {"capital": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]},
-    {"numeric":[0,1,2,3,4,5,6,7,8,9]},
-    {"symbol":["!","@","#","$","%","^","&","*","(",")", "`","?","/","+","-"]},
-  ]
- 
-var randomPass=("")
+  if(!capital && !lower && !numeric && !symbol) {
+    alert("Please make at least one selection.");
+  }
 
-}
-  
-  
+   else if(capital) {
+    choices= choices.concat(capAlpha);
+  }
 
-  return "Generated PassWord Will Go Here"
-}
+   else if(lower) {
+    choices = choices.concat(lowAlpha);
+  }
+
+  else if(numeric) {
+    choices = choices.concat(num);
+  }
+
+  else if(symbol){
+    choices = choices.concat(sym);
+  }
+
+      
+    var pass= "";
+
+    for (var i = 0; i < passLength; i++) {
+      var passOptions = choices[Math.floor(Math.random()*choices.length)];
+      pass= pass.concat(passOptions);
+    }
 
 
+    return pass;
+  }
 
 
 // Write password to the #password input
