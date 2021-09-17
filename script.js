@@ -14,7 +14,7 @@ function generatePassword() {
     if(isNaN(passLength)) {
       alert("You did not enter a number.")
   }
-  else if (passLength<8 || passLenth>128) {
+  else if (passLength<8 || passLength>128) {
     alert("Please enter a number between 8-128")
   }
     
@@ -43,7 +43,12 @@ function generatePassword() {
             var symbol = window.confirm("Do you want special characters?")
 
             if(!symbol){
-              return
+              return  
+            }
+            
+            else{
+              for (var i=0, i=passLength; i++;){
+              randomPass=randompass + charChoices.charAt(Math.floor(Math,random() * Math.floor(charChoices.length -1)));
             }
           }
         }
@@ -51,7 +56,18 @@ function generatePassword() {
     }
   }
 
+  var charChoices=[
+    {"lower":["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]},
+    {"capital": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]},
+    {"numeric":[0,1,2,3,4,5,6,7,8,9]},
+    {"symbol":["!","@","#","$","%","^","&","*","(",")", "`","?","/","+","-"]},
+  ]
+ 
+var randomPass=("")
 
+}
+  
+  
 
   return "Generated PassWord Will Go Here"
 }
